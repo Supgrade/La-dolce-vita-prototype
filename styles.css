@@ -1,0 +1,817 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Prototype Container */
+.prototype-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Phone Frame */
+.phone-frame {
+    width: 375px;
+    height: 812px;
+    background-color: white;
+    border: 15px solid #333;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 30px;
+    background-color: #333;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 100;
+}
+
+.time {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 101;
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 50px 20px 80px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 45px 20px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+    z-index: 10;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.screen-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background-color: white;
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    border-bottom: 2px solid #555;
+}
+
+.nav-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.nav-text {
+    font-size: 12px;
+}
+
+/* Buttons */
+.primary-btn, .secondary-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.primary-btn {
+    background-color: #ddd;
+    color: #333;
+}
+
+.secondary-btn {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+/* Home Screen Components */
+.new-episode {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.new-tag {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.episode-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.episode-desc {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.motto-card {
+    display: flex;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.motto-icon {
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.motto-content {
+    flex: 1;
+}
+
+.motto-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.motto-text {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.user-section {
+    margin-top: 30px;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.user-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+/* Episode Player Components */
+.episode-header {
+    margin-bottom: 30px;
+}
+
+.episode-image {
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.player-controls {
+    margin-top: 20px;
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: #ddd;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 30%; /* Example progress */
+    background-color: #555;
+    border-radius: 2px;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 15px;
+}
+
+.play-btn {
+    background-color: #ddd;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+.save-btn, .share-btn {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Motto List Components */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.search-icon {
+    margin-right: 10px;
+}
+
+.search-input {
+    border: none;
+    background: none;
+    flex: 1;
+    font-size: 16px;
+    outline: none;
+}
+
+.motto-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.motto-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.motto-heart {
+    font-size: 24px;
+    color: #666;
+}
+
+/* Motto Detail Components */
+.motto-detail-card {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.motto-text-large {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.motto-translation, .motto-meaning, .motto-region {
+    margin-bottom: 10px;
+}
+
+.motto-audio {
+    margin: 20px 0;
+}
+
+.audio-btn {
+    background-color: #ddd;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.motto-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.motto-actions button {
+    flex: 1;
+}
+
+/* Rewards Screen Components */
+.points-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.points-label {
+    font-weight: bold;
+}
+
+.points-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.rewards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reward-item {
+    display: flex;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.reward-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #ddd;
+    border-radius: 8px;
+}
+
+.reward-content {
+    flex: 1;
+}
+
+.reward-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.reward-points {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Event Detail Components */
+.event-header {
+    margin-bottom: 20px;
+}
+
+.event-title {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.event-info {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.event-description {
+    margin-bottom: 15px;
+}
+
+.event-points {
+    font-weight: bold;
+}
+
+.event-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Confirmation Screen */
+.confirmation-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.confirmation-message {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.confirmation-details {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.confirmation-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.calendar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.calendar-icon {
+    font-size: 20px;
+}
+
+/* YouTube Integration */
+.channel-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.channel-logo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.channel-info {
+    flex: 1;
+}
+
+.channel-name {
+    font-size: 14px;
+    color: #666;
+}
+
+.channel-subscribers {
+    font-size: 12px;
+    color: #666;
+}
+
+.subscribe-btn {
+    background-color: #ddd;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.channel-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.tab.active {
+    border-bottom-color: #555;
+    font-weight: bold;
+}
+
+.latest-tag {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.video-item {
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.video-thumbnail {
+    width: 120px;
+    height: 70px;
+    background-color: #eee;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail-gesture, .thumbnail-person, .thumbnail-food {
+    font-size: 30px;
+}
+
+.video-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.video-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.video-stats {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Video Player Screen */
+.video-frame {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.gesture-image {
+    width: 80px;
+    height: 80px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+.video-progress {
+    margin-bottom: 20px;
+}
+
+.channel-info-small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.video-duration {
+    background-color: #eee;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.video-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.like-btn, .share-btn, .save-btn {
+    flex: 1;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.comments-section {
+    margin-bottom: 20px;
+}
+
+.comments-count {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.comment {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.video-caption {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.caption-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Toast Message */
+.toast-message {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.toast-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Dictionary Results */
+.dictionary-results {
+    margin-top: 15px;
+}
+
+.dictionary-item {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.dictionary-term {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.dictionary-preview {
+    color: #666;
+    font-size: 14px;
+}
+
+.dictionary-notice {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Dictionary Entry */
+.dictionary-entry-card {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.entry-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.entry-pronunciation {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.entry-section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.entry-definition, .entry-example {
+    line-height: 1.5;
+}
+
+.entry-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.audio-btn {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+} 
