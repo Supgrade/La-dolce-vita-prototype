@@ -25,9 +25,10 @@
                     <div class="motto-card">
                         <div class="motto-icon">📜</div>
                         <div class="motto-content">
-                            <div class="motto-title">Motto of the Day</div>
+                            <div class="motto-title">Italian Saying of the Day</div>
                             <div class="motto-text">"A chi vola basso..."</div>
-                            <button class="secondary-btn" onclick="navigateTo('motto-detail')">Explore More Mottos</button>
+                            <div class="motto-translation">"To those who fly low..."</div>
+                            <button class="secondary-btn" onclick="navigateTo('motto-detail')">Explore More Sayings</button>
                         </div>
                     </div>
 
@@ -36,6 +37,25 @@
                             <div class="user-icon">👤</div>
                             <div class="user-name">Marco</div>
                         </div>
+                    </div>
+                    
+                    <!-- YouTube Integration Section - Added for better recognition -->
+                    <div class="youtube-section">
+                        <div class="section-header">
+                            <div class="youtube-icon">📺</div>
+                            <div class="section-title">YouTube Videos</div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video-thumbnail">
+                                <div class="thumbnail-gesture">✋</div>
+                                <div class="thumbnail-play-icon">▶️</div>
+                            </div>
+                            <div class="video-preview-info">
+                                <div class="video-title">ITALIAN HAND GESTURES</div>
+                                <div class="video-stats">500K views · 1 day ago</div>
+                            </div>
+                        </div>
+                        <button class="youtube-btn" onclick="navigateTo('youtube-screen')">BROWSE ALL VIDEOS</button>
                     </div>
                 </div>
                 
@@ -47,6 +67,10 @@
                     <div class="nav-item" onclick="navigateTo('dictionary-screen')">
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
                     </div>
                     <div class="nav-item" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
@@ -90,6 +114,10 @@
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
                     </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
+                    </div>
                     <div class="nav-item" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
                         <div class="nav-text">REWARDS</div>
@@ -107,7 +135,16 @@
                 <div class="content">
                     <div class="search-bar">
                         <div class="search-icon">🔍</div>
-                        <input type="text" placeholder="Search mottos..." class="search-input">
+                        <input type="text" placeholder="Search mottos..." class="search-input" id="motto-search">
+                        <div class="search-clear" onclick="clearSearch('motto-search')">✕</div>
+                    </div>
+                    
+                    <div id="search-status" class="search-status">
+                        <div class="loading-indicator">
+                            <div class="loading-spinner"></div>
+                            <div>Searching...</div>
+                        </div>
+                        <div class="results-count">4 mottos found</div>
                     </div>
                     
                     <div class="motto-list">
@@ -128,6 +165,19 @@
                             <div class="motto-heart">♡</div>
                         </div>
                     </div>
+                    
+                    <div id="no-results" class="no-results" style="display: none;">
+                        <div class="no-results-icon">🔍</div>
+                        <div class="no-results-text">No mottos found for "<span id="search-term"></span>"</div>
+                        <div class="search-suggestions">
+                            <div class="suggestion-title">You might try:</div>
+                            <div class="suggestion-chips">
+                                <div class="suggestion-chip" onclick="applySuggestion('Chi va piano')">Chi va piano</div>
+                                <div class="suggestion-chip" onclick="applySuggestion('Ride bene')">Ride bene</div>
+                                <div class="suggestion-chip" onclick="applySuggestion('Meglio tardi')">Meglio tardi</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="navbar">
@@ -138,6 +188,10 @@
                     <div class="nav-item active" onclick="navigateTo('dictionary-screen')">
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
                     </div>
                     <div class="nav-item" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
@@ -160,7 +214,10 @@
                         <div class="motto-meaning">Meaning: Those who are lazy or inactive miss opportunities.</div>
                         <div class="motto-region">Region: All of Italy</div>
                         <div class="motto-audio">
-                            <button class="audio-btn">🔊 Listen</button>
+                            <button class="audio-btn">
+                                <div class="play-icon">▶</div>
+                                <div class="audio-text">Listen to Pronunciation</div>
+                            </button>
                         </div>
                         <div class="motto-actions">
                             <button class="save-btn" onclick="showToast('Motto saved to favorites!')">Save</button>
@@ -177,6 +234,10 @@
                     <div class="nav-item active" onclick="navigateTo('dictionary-screen')">
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
                     </div>
                     <div class="nav-item" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
@@ -233,6 +294,10 @@
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
                     </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
+                    </div>
                     <div class="nav-item active" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
                         <div class="nav-text">REWARDS</div>
@@ -265,6 +330,10 @@
                     <div class="nav-item active" onclick="navigateTo('dictionary-screen')">
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
                     </div>
                     <div class="nav-item" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
@@ -312,6 +381,10 @@
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
                     </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
+                    </div>
                     <div class="nav-item" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
                         <div class="nav-text">REWARDS</div>
@@ -352,6 +425,10 @@
                     <div class="nav-item" onclick="navigateTo('dictionary-screen')">
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
                     </div>
                     <div class="nav-item active" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
@@ -397,6 +474,10 @@
                     <div class="nav-item" onclick="navigateTo('dictionary-screen')">
                         <div class="nav-icon">📖</div>
                         <div class="nav-text">DICTIONARY</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
                     </div>
                     <div class="nav-item active" onclick="navigateTo('rewards-screen')">
                         <div class="nav-icon">🎁</div>
@@ -494,8 +575,8 @@
                         
                         <div class="video-actions">
                             <button class="like-btn">👍 LIKE</button>
-                            <button class="share-btn">↗ SHARE</button>
-                            <button class="save-btn">💾 SAVE</button>
+                            <button class="share-btn" onclick="showActionFeedback(this, 'Share options opened')">↗ SHARE</button>
+                            <button class="save-btn" onclick="saveToFavorites(this, 'Video saved to favorites!')">💾 SAVE</button>
                         </div>
                         
                         <div class="comments-section">
@@ -508,6 +589,85 @@
                         <div class="video-caption">
                             <div class="caption-title">LASAGNE</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Favorites Screen -->
+            <div class="screen" id="favorites-screen">
+                <div class="header">
+                    <div class="screen-title">MY FAVORITES</div>
+                </div>
+                
+                <div class="content">
+                    <div class="favorites-tabs">
+                        <div class="favorites-tab active" onclick="showFavoritesTab('videos')">VIDEOS</div>
+                        <div class="favorites-tab" onclick="showFavoritesTab('mottos')">MOTTOS</div>
+                        <div class="favorites-tab" onclick="showFavoritesTab('terms')">TERMS</div>
+                    </div>
+                    
+                    <!-- Favorites Content Section -->
+                    <div class="favorites-content" id="favorites-videos">
+                        <div class="favorites-item" onclick="navigateTo('video-player')">
+                            <div class="favorites-thumbnail">
+                                <div class="thumbnail-gesture">✋</div>
+                                <div class="thumbnail-play-icon">▶️</div>
+                            </div>
+                            <div class="favorites-info">
+                                <div class="favorites-title">ITALIAN HAND GESTURES</div>
+                                <div class="favorites-meta">Saved on Jun 5, 2025</div>
+                            </div>
+                            <div class="favorites-remove" onclick="removeFavorite(event, 'video-1')">✕</div>
+                        </div>
+                        
+                        <div class="empty-favorites" style="display: none;">
+                            <div class="empty-icon">📂</div>
+                            <div class="empty-text">No saved videos yet</div>
+                            <button class="secondary-btn" onclick="navigateTo('youtube-screen')">Browse Videos</button>
+                        </div>
+                    </div>
+                    
+                    <div class="favorites-content" id="favorites-mottos" style="display: none;">
+                        <div class="favorites-item" onclick="navigateTo('motto-detail-single')">
+                            <div class="favorites-info">
+                                <div class="favorites-title">Chi dorme non piglia pesci</div>
+                                <div class="favorites-meta">Saved on Jun 2, 2025</div>
+                            </div>
+                            <div class="favorites-remove" onclick="removeFavorite(event, 'motto-1')">✕</div>
+                        </div>
+                        
+                        <div class="empty-favorites" style="display: none;">
+                            <div class="empty-icon">📂</div>
+                            <div class="empty-text">No saved mottos yet</div>
+                            <button class="secondary-btn" onclick="navigateTo('motto-detail')">Browse Mottos</button>
+                        </div>
+                    </div>
+                    
+                    <div class="favorites-content" id="favorites-terms" style="display: none;">
+                        <div class="empty-favorites">
+                            <div class="empty-icon">📂</div>
+                            <div class="empty-text">No saved terms yet</div>
+                            <button class="secondary-btn" onclick="navigateTo('dictionary-screen')">Browse Dictionary</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navbar">
+                    <div class="nav-item" onclick="navigateTo('home-screen')">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-text">HOME</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('dictionary-screen')">
+                        <div class="nav-icon">📖</div>
+                        <div class="nav-text">DICTIONARY</div>
+                    </div>
+                    <div class="nav-item active" onclick="navigateTo('favorites-screen')">
+                        <div class="nav-icon">⭐</div>
+                        <div class="nav-text">FAVORITES</div>
+                    </div>
+                    <div class="nav-item" onclick="navigateTo('rewards-screen')">
+                        <div class="nav-icon">🎁</div>
+                        <div class="nav-text">REWARDS</div>
                     </div>
                 </div>
             </div>
